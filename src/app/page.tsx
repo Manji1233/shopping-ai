@@ -116,8 +116,8 @@ const quickPrompts = [
 
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-md flex-col bg-white shadow-[0_12px_48px_rgba(15,23,42,0.08)]">
-      <section className="bg-[linear-gradient(135deg,#ff835d_0%,#ffb38b_100%)] px-5 pb-6 pt-8 text-white">
+    <main className="mx-auto flex min-h-screen w-full max-w-md flex-col bg-white shadow-[0_12px_48px_rgba(15,23,42,0.08)] md:my-8 md:min-h-[calc(100vh-4rem)] md:max-w-3xl md:rounded-[32px]">
+      <section className="bg-[linear-gradient(135deg,#ff835d_0%,#ffb38b_100%)] px-5 pb-6 pt-8 text-white md:px-8 md:pt-10">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm/6 text-white/85">家庭服务型 AI 购物管家</p>
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex-1 space-y-5 bg-[#f6f7fb] px-4 pb-28 pt-4">
+      <section className="flex-1 space-y-5 bg-[#f6f7fb] px-4 pb-28 pt-4 md:px-8 md:pb-32 md:pt-6">
         <div className="rounded-3xl bg-white p-4 shadow-sm">
           <div className="flex items-start gap-3">
             <div className="mt-1 flex h-9 w-9 items-center justify-center rounded-2xl bg-[var(--primary-soft)] text-lg text-[var(--primary)]">
@@ -159,7 +159,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-4 flex gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             <button className="flex-1 rounded-2xl bg-[var(--foreground)] px-4 py-3 text-sm font-medium text-white">
               文字提问
             </button>
@@ -194,7 +194,7 @@ export default function Home() {
               App 风格 H5
             </span>
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-3">
+          <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
             <div className="rounded-2xl border border-zinc-200 p-3">
               <p className="text-sm font-medium text-zinc-900">文字</p>
               <p className="mt-2 text-xs leading-5 text-zinc-500">适合复杂家庭采购需求描述与追问。</p>
@@ -224,7 +224,7 @@ export default function Home() {
           <div className="mt-4 space-y-3">
             {recommendations.map((item) => (
               <article key={item.id} className="rounded-3xl border border-[var(--line)] bg-white p-4">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 md:gap-4">
                   <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-zinc-100">
                     <Image src={item.image} alt={item.title} fill className="object-cover" sizes="96px" />
                   </div>
@@ -261,7 +261,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <Link href="/pantry" className="rounded-3xl bg-white p-4 shadow-sm">
             <p className="text-sm text-zinc-500">家庭 AI 仓库</p>
             <h3 className="mt-1 text-lg font-semibold">{pantry.length} 项常购品</h3>
@@ -297,7 +297,7 @@ export default function Home() {
         </div>
       </section>
 
-      <nav className="fixed bottom-0 left-1/2 z-20 flex w-full max-w-md -translate-x-1/2 items-center justify-around border-t border-zinc-200 bg-white/95 px-3 py-3 backdrop-blur">
+      <nav className="fixed bottom-0 left-1/2 z-20 flex w-full max-w-md -translate-x-1/2 items-center justify-around border-t border-zinc-200 bg-white/95 px-3 py-3 backdrop-blur md:max-w-3xl md:rounded-t-[28px]">
         <Link href="/" className="flex flex-col items-center gap-1 text-xs font-medium text-[var(--primary)]">
           <span>AI管家</span>
           <span className="h-1.5 w-6 rounded-full bg-[var(--primary)]" />

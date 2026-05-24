@@ -8,8 +8,12 @@ import { useShoppingStore } from "@/lib/store";
 
 export default function CartPage() {
   const cartItems = useShoppingStore((state) => state.cartItems);
+  const increaseQuantity = useShoppingStore((state) => state.increaseQuantity);
+  const decreaseQuantity = useShoppingStore((state) => state.decreaseQuantity);
+  const removeFromCart = useShoppingStore((state) => state.removeFromCart);
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-md bg-[#f6f7fb] pb-32 md:my-8 md:min-h-[calc(100vh-4rem)] md:max-w-3xl md:rounded-[32px] md:bg-white md:shadow-[0_12px_48px_rgba(15,23,42,0.08)]">
@@ -26,7 +30,7 @@ export default function CartPage() {
       <section className="space-y-4 px-4 pt-4 md:px-8 md:pb-32 md:pt-6">
         <div className="rounded-3xl bg-[linear-gradient(135deg,#111827_0%,#374151_100%)] p-4 text-white shadow-sm">
           <p className="text-sm text-white/70">购物车概览</p>
-          <h2 className="mt-1 text-lg font-semibold">当前共 {cartItems.reduce((sum, item) => sum + item.quantity, 0)} 件商品</h2>
+          <h2 className="mt-1 text-lg font-semibold">当前共 {totalCount} 件商品</h2>
           <p className="mt-2 text-sm leading-6 text-white/80">
             当前合计金额 ¥{total}。你可以继续返回首页提问，或继续加入更多家庭采购商品。
           </p>
@@ -57,7 +61,27 @@ export default function CartPage() {
                     <div>
                       <h3 className="text-base font-semibold text-zinc-900">{item.title}</h3>
                       <p className="mt-1 text-sm leading-6 text-zinc-500">{item.reason}</p>
-                      <p className="mt-2 text-xs text-zinc-500">数量：{item.quantity}</p>
+                      <div className="mt-3 flex items-center gap-2">
+                        <button
+                          onClick={() => decreaseQuantity(item.id)}
+                          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 text-sm text-zinc-700"
+                        >
+                          -
+                        </button>
+                        <span className="min-w-8 text-center text-sm font-medium text-zinc-900">{item.quantity}</span>
+                        <button
+                          onClick={() => increaseQuantity(item.id)}
+                          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 text-sm text-zinc-700"
+                        >
+                          +
+                        </button>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="ml-2 rounded-full bg-red-50 px-3 py-1 text-xs font-medium text-red-600"
+                        >
+                          删除
+                        </button>
+                      </div>
                     </div>
                     <div className="text-right">
                       <div className="text-base font-semibold text-zinc-900">¥{item.price}</div>

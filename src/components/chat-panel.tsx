@@ -32,9 +32,9 @@ export function ChatPanel({ quickPrompts }: ChatPanelProps) {
         </div>
         <div className="flex-1">
           <p className="text-sm text-zinc-500">对话入口</p>
-          <h2 className="text-lg font-semibold text-zinc-900">直接提问，立即得到建议</h2>
+          <h2 className="text-lg font-semibold text-zinc-900">直接提问，系统会为你生成答案</h2>
           <p className="mt-1 text-sm leading-6 text-zinc-600">
-            你可以输入家庭采购需求、预算、适用人群，也可以先点一个快捷问题开始。
+            你可以输入家庭采购需求、预算、适用人群或补货场景，系统会生成对应建议。
           </p>
         </div>
       </div>
@@ -83,9 +83,6 @@ export function ChatPanel({ quickPrompts }: ChatPanelProps) {
         </button>
       </div>
 
-      <div className="mt-3 rounded-2xl bg-zinc-50 p-3 text-sm leading-6 text-zinc-600">
-        当前演示版已支持真实文本提问；语音与拍照入口已保留，后续可继续接入。
-      </div>
 
       <div className="mt-4 grid gap-2">
         {quickPrompts.map((prompt) => (
